@@ -1,86 +1,34 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
-    <title>Programação Web Back End</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Relatório de Aulas </title>
 </head>
+<body>
+        <header>
+            <img src="{% static 'imagens/logo_senai.png' %}" alt="">
 
-<header class="login">
-    <div class="fundo_menu">
-        <div class="logo_senai">
-            <a href="index.html"><img src="{% static 'imagens/logo_senai.png' %}" /></a>
-        </div>
-        <div class="nome_sistema">
-             Programação Web Back End<br>
-             Sistema de Apoio aos Professores
-        </div>
-
-        {% if user.is_authenticated %}
-        <div class="botao_login">
-            <a href="accounts/logout"><button class="btn btn_login">Logout</button></a>
-        </div>
-        {% else %}
-        <div class="botao_login">
-            <a href="accounts/login"><button class="btn btn_login">Login</button></a>
-        </div>
-        {% endif %}
-
-    </div>
-</header> 
-<header class="menu_principal">
-    
-</header>   
+            <a href="login.html">
+                <button>Login</button>
+            </a>            
+            <a href="cad_turma2.html">Turmas</a>
+            <a href="cad_login_turma.html">Professores</a>
+            <a href="cad_atividades_turma.html">Atividades</a>
+            <a href="cad_atividades2.html">Alunos</a>
 
 
+            
 
-<nav class="menu">
-    <ul>
-
-        <li><a href="">Cadastros</a>
-            <ul>
-                <li><a href="">Professores</a></li>
-                <li><a href="">Turmas</a></li>
-                <li><a href="">Atividades</a></li>
-            </ul>
-        </li>   
-        <li><a href="">Consultar</a>
-            <ul>
-                <li><a href="Cons_Cliente.html">Professores</a></li>
-                <li><a href="Cons_Depto.html">Turmas</a></li>
-                <li><a href="Cons_Atendente.html">Atividades</a></li>
-            </ul>
-        </li>
-        <li><a href="">Registrar Turmas do Professor</a></li>
-        <li><a href="">Registrar Atividades da Turma</a></li>
-        <li> | Usuário logado: {{usuario_logado}}</a></li>
-
-    </ul> 
-</nav>      
-<body >
-
-
-
-
-
+        </header>
 
 
 
 </body>
-
-
-<!-- <footer class="rodape">
-    <div class="fundo_menu">
-        
-        <div class="rodape1">
-            Escola e Faculdade de Tecnologia Senai "Roberto Mange"<br>
-            Curso de Análise e Desenvolvimento de Sistemas.<br>
-         
-        </div>  
-        
-        
-    </div>
-</footer>  -->
-
 </html>
