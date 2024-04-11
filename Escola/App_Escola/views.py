@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Professor, Turma, Atividade
 from django.db import connection, transaction
 from django.contrib import messages
@@ -68,7 +68,6 @@ def enviar_login(request):
            
 
             if (senha == senha_criptografada):
-                messages.info(request, 'Bem vindo.')
                 id_logado = dados_professor[0]
                 id_logado = id_logado['id']
                 turmas_do_professor = Turma.objects.filter(id_professor=id_logado)
@@ -101,6 +100,40 @@ def confirmar_cadastro(request):
         grava_professor.save()
 
         return render(request, 'index.html')
+     
+def cad_turma(request, id_professor):
+    usuario_logado = Professor.objects.filter(id = id_professor).values("nome", "id")
+    usuario_logado = usuario_logado[0]
+    usuario_logado = usuario_logado['nome']
+    return render(request, 'Cad_turma.html', {'usuario_logado': usuario_logado, 'id_logado': id_professor})
+
+def salvar_turma_nova(request):
+    if (request.method == 'POST'):
+        nome_turma = request.POST.get('nome_turma')
+        id_professor = request.POST.get('id_professor')
+
+        professor = Professor.objects.get(id=id_professor)
+        
+        grava_turma = Turma(
+            nome_turma=nome_turma,
+            id_professor=professor
+        )
+        grava_turma.save()
+        messages.info(request, 'Turma' + nome_turma + ' cadastro com sucesso.')
+
+        return redirect('lista_turma', id_professor=id_professor)
+    
+def lista_turma(request, id_professor):
+    dados_professor = Professor.objects.filter(id=id_professor).values("nome", "id")
+    usuario_logado = dados_professor[0]
+    usuario_logado = usuario_logado["nome"]
+    id_logado = dados_professor[0]
+    id_logado = id_logado['id']
+    turmas_do_professor = Turma.objects.filter(id_professor=id_logado)
+    return render(request, 'Cons_Turma_Lista.html', {
+        'usuario_logado':usuario_logado, 'turmas_do_professor': turmas_do_professor,
+        'id_logado': id_logado
+    })
 
 
 
