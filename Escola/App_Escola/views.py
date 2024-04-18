@@ -73,7 +73,7 @@ def enviar_login(request):
                 turmas_do_professor = Turma.objects.filter(id_professor=id_logado)
                 print("Turma do professor: ", turmas_do_professor)
                 return render(request, 'Cons_Turma_Lista.html',{
-                    'usuario logado': usuario_logado, 'turmas_do professor': turmas_do_professor, 'id_logado': id_logado
+                    'usuario_logado': usuario_logado, 'turmas_do_professor': turmas_do_professor, 'id_logado': id_logado
                 })
                 # mensagem = "Olá professor, " + email + "Seja bem vindo!!"
                 # # return render(request, 'index.html')
