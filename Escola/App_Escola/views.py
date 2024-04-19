@@ -119,7 +119,7 @@ def salvar_turma_nova(request):
             id_professor=professor
         )
         grava_turma.save()
-        messages.info(request, 'Turma' + nome_turma + ' cadastro com sucesso.')
+        messages.info(request, 'Turma ' + nome_turma + ' cadastrada com sucesso.')
 
         return redirect('lista_turma', id_professor=id_professor)
     
@@ -134,6 +134,64 @@ def lista_turma(request, id_professor):
         'usuario_logado':usuario_logado, 'turmas_do_professor': turmas_do_professor,
         'id_logado': id_logado
     })
+
+# NAO MEXER AQUI PRA CIMA
+
+def cad_atividade(request):
+    id_turma = request.GET.get('id_turma')
+    id_logado = request.GET.get('who')
+
+    nome_da_turma = Turma.objects.filter(id=id_turma).values("nome_turma")
+
+    dados_professor = Professor.objects.filter(id=id_logado).values("nome", "id")
+    usuario_logado = dados_professor[0]
+    usuario_logado = usuario_logado['nome']
+    atividades_da_turma = Atividade.objects.filter(id_turma = id_turma)
+
+    return render(request, 'Cons_Atividade_Lista.html', {'usuario_logado': usuario_logado, 
+                                                         'atividades_da_turma': atividades_da_turma, 
+                                                         'id_logado': id_logado, 
+                                                         'nome_da_turma':nome_da_turma
+                                                         })
+
+
+def salvar_atividade_nova(request):
+    if (request.method == 'POST'):
+        nome_atividade = request.POST.get('nome_atividade')
+        id_turma = request.POST.get('id_turma')
+        id_logado = request.POST.get('id_professor')
+
+        turma = Turma.objects.get(id=id_turma)
+        
+        grava_atividade = Atividade(
+            nome_atividade=nome_atividade,
+            id_turma=turma
+        )
+        grava_atividade.save()
+        messages.info(request, 'Atividade' + nome_atividade + ' cadastrada com sucesso.')
+
+        nome_da_turma = Turma.objects.get(id = id_turma)
+
+        dados_professor = Professor.objects.filter(id = id_logado).values("nome", "id")
+        usuario_logado = dados_professor[0]
+        usuario_logado = usuario_logado['nome']
+
+        atividades_da_turma = Atividade.objects.filter(id_turma=id_turma)
+
+        return render('Cad_Atividade.html', {'usuario_logado':usuario_logado, 'atividades_da_turma': atividades_da_turma, 'id_logado': id_logado, 'nome_da_turma': nome_da_turma})
+    
+# def lista_atividade(request, id_turma):
+#     dados_turma = Turma.objects.filter(id=id_turma).values("nome", "id")
+#     nome_turma = dados_turma[0]['nome']
+#     id_logado = dados_turma[0]['id']
+#     atividades_da_turma = Atividade.objects.filter(id_turma=id_logado)
+#     return render(request, 'Cons_Atividade_Lista.html', {
+#         'nome_turma': nome_turma,
+#         'atividades_da_turma': atividades_da_turma
+#     })
+
+
+
 
 
 

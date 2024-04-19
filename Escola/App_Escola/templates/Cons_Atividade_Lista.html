@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Cons_Turma_Lista.css' %}">
-    <title>Document</title>
+    <title>PWBE</title>
 </head>
 <header class="login">
     <div class="fundo_menu">
@@ -20,7 +20,7 @@
 
        <li><a href="/cad_turma/{{id_logado}}">Cadastrar Turmas</a></li>
         
-       <li> | Professor logado: {{usuario_logado}} | </a></li>
+       <!-- <li> | Professor logado: {{usuario_logado}} | </a></li> -->
        <li><a href="../accounts/logout">SAIR</a></li>
 
     </ul>
@@ -53,12 +53,12 @@
                 <th>Visitar</th>
             </tr>
             
-            {% for igs in turmas_do_professor %}
+            {% for igs in atividades_da_turma %}
             <tr>
                 <td style="text-align:center">{{igs.id}} </td>
-                <td>{{igs.nome_turma}}</td>
+                <td>{{igs.nome_atividade}}</td>
                 <td style="text-align:center"><a href="javascript:valida_excluir({{igs.id}})"><i class="fa-solid fa-trash"></i></a></td>
-                <td style="text-align:center"><a href="/ver_atividades?id_turma={{igs.id}}&who={{id_logado}}"><i class="fa-solid fa-eye"></i></a></td>
+                <td style="text-align:center"><a href="/lista_atividade?id_turma={{igs.id}}&who={{id_logado}}"><i class="fa-solid fa-eye"></i></a></td>
             </tr>
             {% endfor %}
 
