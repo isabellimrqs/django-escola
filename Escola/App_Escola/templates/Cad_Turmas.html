@@ -297,133 +297,15 @@
 
 <nav class="menu">
     <ul>
-        <li><a href="/Cad_Turmas/{{id_logado}}">Cadastrar Atividade</a></li>
-        <li> | Professor logado: {{usuario_logado}} | </a></li>
-        <li><a href="../accounts/logout">SAIR</a></li>
+       <li id="nome_logado"> | Professor logado: {{usuario_logado}} | </a></li>
+       <li><a href="../accounts/logout">SAIR</a></li>
     </ul>
 </nav> 
-     
+
 <body onLoad="login();">
-    <div class="principal">
-    <div class="container">
-        <section class="enquadramento">
-            <h1>Atividades da Turma</h1>
-        </section>
-        
-        <table>
-            <h1 style="font-size: 20px;margin-top: 30px;">{{ turma_logada }}</h1>
-            <tr>
-                <th>Numero</th>
-                <th>Atividade</th>
-            </tr>
-            
-            {% for atividade in atividades_da_turma %}
-            <tr>
-                <td>{{ atividade.id }}</td>
-                <td>{{ atividade.nome_atividade }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        
-        <section style="margin-top: 20px;" class="enquadramento">
-            <h2>Cadastrar Nova Atividade</h2>
-        </section>
-        
-        <form id="form" class="form" style="margin-top: 20px; padding: 20px;" method="post" action="{% url 'salvar_atividade_nova' %}">
-            <div class="form-content">
-                {% csrf_token %}
-                <input type="hidden" name="id_turma" value="{{ id_turma }}">
-                <label for="nome_atividade">Nome da Atividade:</label>
-                <input type="text" name="nome_atividade" id="nome_atividade" required>
-                <button style="display: flex; align-items: center; justify-content: center; padding: 7px; cursor: pointer; background-color: #a81808; border-radius: 15px; color: #fafafa; border: 1px solid transparent;" type="submit">Cadastrar</button>
-            </div>
-            
-        </form>
-        
-
-    </div>    
-    </div>
-
-</body>
+    
 
 <script src="https://kit.fontawesome.com/c9237383f1.js" crossorigin="anonymous"></script>
 
 </body>
-
-<script>
-
-function login(){
-
-        const value_id_logado = localStorage.getItem('proj_escola_id_logado');
-        const value_nome_logado = localStorage.getItem('proj_escola_nome_logado');
-        let id_logado = document.getElementById("id_logado").value
-
-        if (value_id_logado == null) {
-
-            //let id_logado = document.getElementById("id_logado").value
-            let nome_logado = document.getElementById("nome_logado").value
-
-            localStorage.setItem('proj_escola_id_logado', id_logado)
-            localStorage.setItem('proj_escola_nome_logado', nome_logado)
-
-        }
-        else
-        {
-          if (value_id_logado == null || value_id_logado != id_logado) {
-              window.alert('Você não está logado. Faça o Login antes de continuar.');
-              window.location.href='../';
-          }
-          else{
-
-            document.getElementById("id_logado").value = value_id_logado ;
-            document.getElementById("nome_logado").value = value_nome_logado ;
-          }
-        }
-
-
-    }
-
-</script>
-
-
-
-<script>
-
-function excluirTurma(id) {
-  // Primeiro, exibir a mensagem de confirmação
-  let userConfirmation = confirm("Você tem certeza de que deseja excluir este item?");
-  
-  // Se o usuário confirmou a exclusão
-  if (userConfirmation) {
-    // Enviar uma solicitação para excluir a turma
-    fetch(`/excluir_turma/${id}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        // Se a exclusão for bem-sucedida, redirecione o usuário para a página desejada
-        window.location.href = '/enviar_login';
-      } else {
-        // Se houver um erro na exclusão, mostre uma mensagem de erro
-        console.error('Erro ao excluir a turma.');
-      }
-    })
-    .catch(error => {
-      console.error('Erro ao excluir a turma:', error);
-    });
-  } else {
-    // Se o usuário cancelou a exclusão
-    console.log('Operação de exclusão cancelada.');
-  }
-}
-</script>
-
-
-
-
-
-</script>
-
-
-
 </html>

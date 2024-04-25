@@ -1,33 +1,22 @@
-"""
-URL configuration for Escola project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.abre_index, name='abre_index'),
-    path('enviar_login', views.enviar_login, name='enviar_login'),
-    path('confirmar_cadastro', views.confirmar_cadastro, name='confirmar_cadastro'),
+    path ('', views.abre_index, name='abre_index'),
+    path ('enviar_login', views.enviar_login, name='enviar_login'),
+    path ('confirmar_cadastro', views.confirmar_cadastro, name='confirmar_cadastro'),
 
-    path('cad_turma/<int:id_professor>', views.cad_turma, name='cad_turma'),
-    path('salvar_turma', views.salvar_turma_nova, name='salvar_turma_nova'),
-    path('lista_turma/<int:id_professor>', views.lista_turma, name='lista_turma'),
+    path ('Cons_Turma_Lista', views.enviar_login, name='Cons_Turma_Lista'),
+    path ('cad_turmas/<int:id_professor>', views.cad_turmas, name='cad_turmas'),
+    path ('salvar_turma', views.salvar_turma_nova, name='salvar_turma_nova'),
+    path ('lista_turma/<int:id_professor>', views.lista_turma, name='lista_turma'),
 
-    path('cad_atividade', views.cad_atividade, name='cad_atividade'),
-    path('salvar_atividade', views.salvar_atividade_nova, name='salvar_atividade_nova'),
-#     path('lista_atividade/<int:id_turma>', views.lista_atividade, name='lista_atividade')
-# 
+    path ('Cons_Atividade_Lista', views.enviar_login, name='Cons_Atividade_Lista'),
+    path ('Cad_Atividade/<int:id_turma>', views.cad_atividade, name='Cad_Atividade'),
+    path ('salvar_atividade', views.salvar_atividade_nova, name='salvar_atividade_nova'),
+    path ('lista_atividade/<int:id_turma>', views.lista_atividade, name='lista_atividade'),
+
+    path('excluir_turma/<int:id>/', views.excluir_turma, name='excluir_turma'),
 ]
+
+

@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/styles/styles2.css">
-<title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Sucesso</title>
     <style>
         body{
             margin: 0;
@@ -25,7 +25,7 @@
             max-width: 400px;
             max-height: 700px;
             margin: 200px auto;
-            padding: 20px 10px 20px 10px;
+            padding: 35px 10px 5px 10px;
             border: 1px solid gray;
             border-radius: 30px;
             background-color: white;
@@ -41,20 +41,16 @@
             color: red;
         }
         .box-login h3 {
-            margin-top: 40px;
             margin-bottom: 40px;
-            font-size: 18px;
-            color: brown;
         }
 
         .form {
             margin-bottom: 25px;
         }
         .form label {
-            display: flex;
-            margin-left: 50px;
-            font-size: 14px;
-            margin-bottom: 7px;
+            display: block;
+            
+            font-size: 15px;
         }
         .form input[type="text"],
         .form input[type="email"],
@@ -62,26 +58,22 @@
             width: 70%;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 10px;
+            border-radius: 30px;
             
         }
-
         .form button {
             padding: 10px 50px;
             border: none;
-            border-radius: 15px;
+            border-radius: 20px;
             background-color: brown;
             color: #fff;
             cursor: pointer;
             margin-top: 15px;
-            font-size: 15px;
         }
-
         .form button:hover {
             background-color:red;
-            
+            font-weight: bold;
         }
-
         .button-respostas{
             padding: 10px 50px;
             border: none;
@@ -95,33 +87,13 @@
 </head>
 
 <body>
-
+    
 <div class="container">
-    <div class="box-login">
-        <h2>Login</h2>
-        <p>Seja Bem-Vindo! Faça login para entar em sua conta.</p>
-        <div class="error-message" style="margin-bottom: 30px;">
-            <!-- Mensagem de erro sera inserida aqui-->
-        </div>
-        <form action="/enviar_login" method="post">
-
-            <div class="form">
-                {% csrf_token %}
-                <label for="Email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email" required>
-            </div>
-
-            <div class="form">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
-            </div>
-            <div class="form">
-                <button type="submit">Login</button>
-            </div>
-        </form>
+    <div class="box-login" style="border-radius: 10px;">
+        <h2 style="padding: 15px;">Excluido com sucesso </h2>
+        <img src="./imagens/icon-right4.png" style="width: 100px;margin-bottom: 30px;">
     </div>
 </div>
-
 
 </body>
 </html>
