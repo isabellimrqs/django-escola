@@ -21,7 +21,7 @@
             height: 105px;
             column-count:3;
             position: relative;
-            background-color: #a4b2c2;
+            background-color: lightgrey;
             }
 
         .nome_sistema{
@@ -41,7 +41,6 @@
         .btn{
             width: 150px;
             height: 60px;
-            /* alinhamento do botao no Header */
             position: absolute;
             margin: 20px 0 0 500px;
             border: solid 1px gray;
@@ -49,17 +48,15 @@
             font-size: 30px;
             font-weight: bold;
             font: Arial;
-            background-color: rgb(241, 7, 7);
+            background-color: blue;
             color: white;
-            /*Borda arredondada */
-            border-radius: 40px;
-            /*Faz o cursor mudar para maozinha quando posicionado sobre ele */
+            border-radius: 20px;
             cursor: pointer;
         }
 
-        /*hover é acionado quando o cursor estiver sobre o botão. Neste caso faremos um vermelho mais escuro */
+       
         .btn:hover{
-            background-color: rgb(189, 7, 7);
+            background-color: lightblue;
             color: rgb(218, 196, 196);
         }
 
@@ -213,12 +210,12 @@
         .btn_cons_cancel{
             width: 150px;
             height: 40px;
-            border: solid 1px rgb(138, 86, 86);
+            border: solid 1px lightblue;
             background: none;
             font-size: 20px;
             font-weight: bold;
             font: Arial;
-            background-color: rgb(241, 7, 7);
+            background-color: blue;
             color: white;
             /*Borda arredondada */
             border-radius: 40px;
@@ -282,7 +279,7 @@
         }
 
         .form-content.error a{
-            color: #ff3b25;
+            color: blue;
             visibility: visible; 
         }
         *{
@@ -299,7 +296,7 @@
             column-count:3;
             position: relative;
             padding: 30px 500px 0px 20px;
-            background-color: #750c0c;
+            background-color: blue;
             justify-content: center;
         }
 
@@ -340,7 +337,7 @@
         .menu ul {
             list-style-type: none;
             padding: 0;
-            background-color: rgb(141, 32, 32);
+            background-color: blue;
             font-size: 17px;
         }
 
@@ -358,7 +355,7 @@
         }
 
         .menu ul li a:hover {
-            background-color: #750c0c;
+            background-color: lightblue;
             color: #e7e7e7;
             font-weight: bold;
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
@@ -402,13 +399,14 @@
 
 <nav class="menu">
     <ul>
-       <li><a href="/Cad_Turmas/{{id_logado}}">Cadastrar Turmas</a></li>
+       <li><a href="/cad_turmas/{{id_logado}}">Cadastrar Turmas</a></li>
        <li> | Professor logado: {{usuario_logado}} | </a></li>
        <li><a href="../accounts/logout">SAIR</a></li>
     </ul>
 </nav> 
      
-<body onLoad="login();">
+<body> 
+    <!-- onLoad="login();" -->
     <div class="principal">
     <div class="container">
         <section class="enquadramento">
@@ -477,35 +475,34 @@
 
 <script>
 
-function login(){
-        const value_id_logado = localStorage.getItem('proj_escola_id_logado');
-        const value_nome_logado = localStorage.getItem('proj_escola_nome_logado');
-        let id_logado = document.getElementById("id_logado").value
+// function login(){
+//         const value_id_logado = localStorage.getItem('proj_escola_id_logado');
+//         const value_nome_logado = localStorage.getItem('proj_escola_nome_logado');
+//         let id_logado = document.getElementById("id_logado").value
 
-        if (value_id_logado == null) {
+//         if (value_id_logado == null) {
 
-            //let id_logado = document.getElementById("id_logado").value
-            let nome_logado = document.getElementById("nome_logado").value
+//             //let id_logado = document.getElementById("id_logado").value
+//             let nome_logado = document.getElementById("nome_logado").value
 
-            localStorage.setItem('proj_escola_id_logado', id_logado)
-            localStorage.setItem('proj_escola_nome_logado', nome_logado)
+//             localStorage.setItem('proj_escola_id_logado', id_logado)
+//             localStorage.setItem('proj_escola_nome_logado', nome_logado)
 
-        }
-        else
-        {
-          if (value_id_logado == null || value_id_logado != id_logado) {
-              window.alert('Você não está logado. Faça o Login antes de continuar.');
-              window.location.href='../';
-          }
-          else{
+//         }
+//         else
+//         {
+//           if (value_id_logado == null || value_id_logado != id_logado) {
+//               window.alert('Você não está logado. Faça o Login antes de continuar.');
+//               window.location.href='../';
+//           }
+//           else{
+//             document.getElementById("id_logado").value = value_id_logado ;
+//             document.getElementById("nome_logado").value = value_nome_logado ;
+//           }
+//         }
 
-            document.getElementById("id_logado").value = value_id_logado ;
-            document.getElementById("nome_logado").value = value_nome_logado ;
-          }
-        }
 
-
-    }
+//     }
 
 </script>
 

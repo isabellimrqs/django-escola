@@ -49,7 +49,7 @@
             font-size: 30px;
             font-weight: bold;
             font: Arial;
-            background-color: rgb(241, 7, 7);
+            background-color: blue;
             color: white;
             /*Borda arredondada */
             border-radius: 40px;
@@ -59,7 +59,7 @@
 
         /*hover é acionado quando o cursor estiver sobre o botão. Neste caso faremos um vermelho mais escuro */
         .btn:hover{
-            background-color: rgb(189, 7, 7);
+            background-color: lightblue;
             color: rgb(218, 196, 196);
         }
 
@@ -213,13 +213,12 @@
         .btn_cons_cancel{
             width: 150px;
             height: 40px;
-            border: solid 1px rgb(138, 86, 86);
+            border: solid 1px;
             background: none;
             font-size: 20px;
             font-weight: bold;
             font: Arial;
-            background-color: rgb(241, 7, 7);
-            color: white;
+            background-color: blue;
             /*Borda arredondada */
             border-radius: 40px;
             /*Faz o cursor mudar para maozinha quando posicionado sobre ele */
@@ -277,12 +276,12 @@
         }
 
         .form-content.error input{
-            border-color: #ff3b25;
+            border-color: blue;
 
         }
 
         .form-content.error a{
-            color: #ff3b25;
+            color: lightblue;
             visibility: visible; 
         }
     </style>
@@ -303,7 +302,8 @@
     </ul>
 </nav> 
      
-<body onLoad="login();">
+<body >
+    <!-- onLoad="login();" -->
     <div class="principal">
     <div class="container">
         <section class="enquadramento">
@@ -335,7 +335,7 @@
                 <input type="hidden" name="id_turma" value="{{ id_turma }}">
                 <label for="nome_atividade">Nome da Atividade:</label>
                 <input type="text" name="nome_atividade" id="nome_atividade" required>
-                <button style="display: flex; align-items: center; justify-content: center; padding: 7px; cursor: pointer; background-color: #a81808; border-radius: 15px; color: #fafafa; border: 1px solid transparent;" type="submit">Cadastrar</button>
+                <button style="display: flex; align-items: center; justify-content: center; padding: 7px; cursor: pointer; background-color: blue; border-radius: 15px; color: #fafafa; border: 1px solid transparent;" type="submit">Cadastrar</button>
             </div>
             
         </form>
@@ -352,36 +352,36 @@
 
 <script>
 
-function login(){
+// function login(){
 
-        const value_id_logado = localStorage.getItem('proj_escola_id_logado');
-        const value_nome_logado = localStorage.getItem('proj_escola_nome_logado');
-        let id_logado = document.getElementById("id_logado").value
+//         const value_id_logado = localStorage.getItem('proj_escola_id_logado');
+//         const value_nome_logado = localStorage.getItem('proj_escola_nome_logado');
+//         let id_logado = document.getElementById("id_logado").value
 
-        if (value_id_logado == null) {
+//         if (value_id_logado == null) {
 
-            //let id_logado = document.getElementById("id_logado").value
-            let nome_logado = document.getElementById("nome_logado").value
+//             //let id_logado = document.getElementById("id_logado").value
+//             let nome_logado = document.getElementById("nome_logado").value
 
-            localStorage.setItem('proj_escola_id_logado', id_logado)
-            localStorage.setItem('proj_escola_nome_logado', nome_logado)
+//             localStorage.setItem('proj_escola_id_logado', id_logado)
+//             localStorage.setItem('proj_escola_nome_logado', nome_logado)
 
-        }
-        else
-        {
-          if (value_id_logado == null || value_id_logado != id_logado) {
-              window.alert('Você não está logado. Faça o Login antes de continuar.');
-              window.location.href='../';
-          }
-          else{
+//         }
+//         else
+//         {
+//           if (value_id_logado == null || value_id_logado != id_logado) {
+//               window.alert('Você não está logado. Faça o Login antes de continuar.');
+//               window.location.href='../';
+//           }
+//           else{
 
-            document.getElementById("id_logado").value = value_id_logado ;
-            document.getElementById("nome_logado").value = value_nome_logado ;
-          }
-        }
+//             document.getElementById("id_logado").value = value_id_logado ;
+//             document.getElementById("nome_logado").value = value_nome_logado ;
+//           }
+//         }
 
 
-    }
+//     }
 
 </script>
 

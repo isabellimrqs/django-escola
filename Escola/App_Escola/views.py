@@ -11,7 +11,7 @@ def initial_population():
     print ("Vou Popular")
 
     cursor = connection.cursor()
-    print("aqui kakk")
+    print("chegou")
 
     # senha="123456"
     # senha_armazenar = sha256(senha.encode()).hexdigest()
@@ -67,7 +67,8 @@ def abre_index(request):
     else:
         print("Achei Obama", verifica_populado)
 
-    return render(request, 'Login.html')
+    usuario_logado = request.user.username
+    return render(request, 'Index.html', {'usuario_logado':usuario_logado})
 
 # enviar login --------------------------------------------------------
 def enviar_login(request):
@@ -118,7 +119,7 @@ def confirmar_cadastro(request):
         )
         grava_professor.save()
         
-        return render(request, 'Index.html')
+        return render(request, 'Cons_Turma_lista.html')
 
 
 def cad_turmas(request, id_professor):
@@ -156,10 +157,10 @@ def lista_turma(request, id_professor):
     id_logado = id_logado['id']
     turmas_do_professor = Turma.objects.filter(id=id_logado)
         
-    return render(request, 'Cons_Atividade_Lista.html', {'usuario_logado': usuario_logado, 'turmas_do_professor': turmas_do_professor,'id_logado':id_logado})
+    return render(request, 'Cons_Turma_Lista.html', {'usuario_logado': usuario_logado, 'turmas_do_professor': turmas_do_professor,'id_logado':id_logado})
 
 
-#---------------------------------------
+# NAO MEXER AQUI PRA CIMA
 
 def cad_atividade(request, id_turma):
     nome_turma = Turma.objects.get(id=id_turma).nome_turma
@@ -180,11 +181,11 @@ def salvar_atividade_nova(request):
         messages.info(request, f'Atividade {nome_atividade} cadastrada com sucesso.')
         return redirect('lista_atividade', id_turma=id_turma)
 
+
 def lista_atividade(request, id_turma):
     turma = Turma.objects.get(id=id_turma)
     atividades_da_turma = Atividade.objects.filter(id_turma=turma)
     return render(request, 'Cons_Atividade_Lista.html', {'turma_logada': turma.nome_turma, 'atividades_da_turma': atividades_da_turma, 'id_turma': id_turma})
-
 
 def excluir_turma(request, id):
     if request.method == 'POST':
